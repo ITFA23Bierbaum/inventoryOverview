@@ -1,0 +1,9 @@
+{% extends "inventory/base.html" %}
+{% block content %}
+    <h1>Aufträge suchen</h1>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'order-result' %}">
+      {% csrf_token %}
+      <input type="search" placeholder="Suchbegriff" name="searched">
+      <button type="submit">Suchen</button>
+    </form>
+{% endblock content %}

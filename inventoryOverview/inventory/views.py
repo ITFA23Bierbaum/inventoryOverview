@@ -6,7 +6,8 @@ from .models import Order, InventoryItem, OrderItem
 
 # Create your views here.
 def search(request):
-    return render(request, 'inventory/search.html')
+    orders = Order.objects.filter()
+    return render(request, 'inventory/search.html', {'title': 'Auftrag suchen', 'orders': orders})
 
 
 def result(request):

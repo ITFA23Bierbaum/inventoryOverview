@@ -99,7 +99,8 @@
 <body>
     <div id="div_flag" class="bannerDiv" >
         <div>
-           <!-- <link rel="shortcut icon" type="image/png" href="{}"/>-->
+            {% load static %}
+            <img src="{% static 'ressources/logo.png' %}" >
             <h1>{{ title }}</h1>
         </div>
         <form id="frm_bannerRight">

@@ -5,10 +5,10 @@
           enctype="multipart/form-data"
           action="{% url 'order-detail' %}"
           style="display: none" >
-        <input id="input_redirectValue" name="selectedOrder" type="hidden" />
+      {% csrf_token %}
+        <input id="input_redirectValue" name="selectedOrderId" type="hidden" />
     </form>
     <form id="frm_content" method="POST" enctype="multipart/form-data" >
-      {% csrf_token %}
         <style>
             table.ordersTable tr > *:nth-child(1) {
                 width: 200px;
@@ -61,7 +61,7 @@
             </thead>
             <tbody>
                 {% for order in orders %}
-                <tr class="contentRow" onclick="orderClick('{{order.number}}');" >
+                <tr class="contentRow" onclick="orderClick('{{order.id}}');" >
                     <td>{{order.number}}</td>
                     <td>{{order.customer.name}}</td>
                 </tr>

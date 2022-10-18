@@ -1,6 +1,10 @@
 {% extends 'inventory/base.html' %}
 {% block content %}
   {% if order %}
+    <form id="frm_orderDetails"
+          method="POST"
+          enctype="multipart/form-data"
+          action="{% url 'order-detail' %}" >
       <h1>Auftrag</h1>
         <p>{{ order.number }} - {{ order.customer.name }}</p>
         <table>
@@ -22,5 +26,7 @@
                 <td>{{item.inventoryItem.shelf}}</td>
             </tr>
             {% endfor %}
+        </table>
+    </form>
   {% endif %}
 {% endblock %}

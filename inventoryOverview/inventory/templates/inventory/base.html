@@ -1,113 +1,19 @@
 <head>
-    <title>{{ title }}</title>
-    <style>
-        :root {
-          --dark-green: #030;
-          --dark-green-hover: #040;
-          --dark: #111;
-          --dark-hover: #141414;
-          --background: #222;
-          --text: #888;
-        }
-
-        * {
-            font-family: sans-serif;
-        }
-
-        body {
-            margin: 0;
-            background-color: var(--background);
-        }
-
-        body > div {
-            padding: 8px;
-        }
-
-        .bannerDiv {
-            display: flex;
-            height: 40px;
-            background-color: var(--dark-green);
-            justify-content: space-between;
-        }
-
-        .bannerDiv > form {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-
-        .bannerDiv > form > * {
-            margin: 4px;
-        }
-
-        .contentDiv {
-            height: calc(100% - 100px);
-        }
-
-        .subcontentDiv {
-            height: 10px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        h1, button, label, input {
-            color: var(--text);
-            margin: 0;
-        }
-
-        h1, th, td {
-            cursor: default;
-        }
-
-        input, button {
-            height: 30px;
-            border-radius: 2px;
-            border: 1px solid #000000;
-            padding: 4px;
-        }
-
-        input[type='search'] {
-            background: var(--dark);
-        }
-
-        input[type='search']:hover {
-            background: var(--dark-hover);
-        }
-
-        button {
-            background: var(--dark-green);
-        }
-
-        button:hover {
-            background: var(--dark-green-hover);
-        }
-
-        table tr > * {
-            text-align: left;
-            color: var(--text);
-        }
-
-        .header > th,
-        .contentRow > td {
-            padding: 5px;
-        }
-        .filter > th {
-            padding: 0;
-        }
-    </style>
+    {% load static %}
+    <title>{{ title }}</title>d
+    <link rel="stylesheet" href="{% static 'inventory/style.css' %}" />
 </head>
 <body>
-    <div id="div_flag" class="bannerDiv" >
-        <div>
-            {% load static %}
-            <img src="{% static 'ressources/logo.png' %}" >
+    <div id="div_flag" class="bannerDiv contentPart" >
+        <div class="title" >
+            <img src="{% static 'inventory/logo.png' %}" class="titleImage" >
             <h1>{{ title }}</h1>
         </div>
         <form id="frm_bannerRight">
             <button type="submit">Ich bin Rechts</button>
         </form>
     </div>
-    <div id="div_content" class="contentDiv" >
+    <div id="div_content" class="contentDiv contentPart" >
         {% block content %}{% endblock %}
     </div>
     <div id="div_subcontent" class="subcontentDiv" >

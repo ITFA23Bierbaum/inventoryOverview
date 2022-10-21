@@ -1,5 +1,6 @@
 {% extends "inventory/base.html" %}
 {% block content %}
+{% load static %}
     <form id="frm_redirect"
           method="POST"
           enctype="multipart/form-data"
@@ -9,40 +10,7 @@
         <input id="input_redirectValue" name="selectedOrderId" type="hidden" />
     </form>
     <form id="frm_content" method="POST" enctype="multipart/form-data" >
-        <style>
-            table.ordersTable tr > *:nth-child(1) {
-                width: 200px;
-            }
-
-            table.ordersTable tr > *:nth-child(2) {
-                width: 300px;
-            }
-        </style>
-        <script>
-            function callback() {
-
-            }
-
-            function filterOnKeyDown(event) {
-                if (event.keyCode >= 48 && event.keyCode <= 57
-                        || event.keyCode >= 65 && event.keyCode <= 90
-                        || event.keyCode == 8) {
-                    console.log(event.path[0].value);
-                }
-            }
-
-            function addFilterToOrders() {
-                [].slice.call(document.getElementsByClassName('filter')[0].getElementsByTagName('input'))
-                        .forEach(function(e) {
-                    e.addEventListener('keyup', filterOnKeyDown, false);
-                });
-            }
-
-            function orderClick(orderNo) {
-                document.getElementById('input_redirectValue').value = orderNo;
-                frm_redirect.submit();
-            }
-        </script>
+        <script type="text/javascript" src="{% static 'inventory/orderListScript.js' %}" ></script>
         <table id="tbl_orders"
                class="ordersTable" >
             <thead >
@@ -52,7 +20,10 @@
                 </tr>
                 <tr class="filter" >
                     <th>
-                        <input type="search" placeholder="Auftrags-Nummer" name="orderNoSearch" >
+                        <input type="search"
+                               placeholder="Auftrags-Nummer"
+                               name="orderNoSearch"
+                               onkeyup="filter(event)" >
                     </th>
                     <th>
                         <input type="search" placeholder="Kunde" name="customerSearch" >

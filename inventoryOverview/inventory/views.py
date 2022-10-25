@@ -11,7 +11,8 @@ def search(request):
 
 def order(request):
     orderId= request.POST['selectedOrderId']
-    print(orderId)
     current_order = Order.objects.get(id=orderId)
     current_items = OrderItem.objects.filter(order=current_order)
-    return render(request, 'inventory/order.html', {'order': current_order, 'items': current_items})
+    return render(request, 'inventory/orderDetails.html',
+                  {'title': current_order.number + ' - ' + current_order.customer.name,
+                   'order': current_order, 'items': current_items})

@@ -4,15 +4,15 @@
     <link rel="stylesheet" href="{% static 'inventory/style.css' %}" />
 </head>
 <body>
-    <div id="div_flag" class="bannerDiv contentPart" >
-        <div class="title" >
-            <img src="{% static 'inventory/logo.png' %}" class="titleImage" >
-            <h1>{{ title }}</h1>
+    <form id="frm_bannerRight">
+        <div id="div_flag" class="bannerDiv contentPart" >
+            <div class="title" >
+                <img src="{% static 'inventory/logo.png' %}" class="titleImage" >
+                <h1>{{ title }}</h1>
+            </div>
+            <!--<button type="submit">Ich bin Rechts</button> HEADER BUTTON POSITION-->
         </div>
-        <form id="frm_bannerRight">
-            <button type="submit">Ich bin Rechts</button>
-        </form>
-    </div>
+    </form>
     <div id="div_content" class="contentDiv contentPart" >
         {% block content %}{% endblock %}
     </div>

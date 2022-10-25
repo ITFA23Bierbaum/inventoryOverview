@@ -25,6 +25,8 @@ body > div {
     height: 40px;
     background-color: var(--dark-green);
     justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .bannerDiv > form {
@@ -52,8 +54,32 @@ h1, button, label, input {
     margin: 0;
 }
 
-h1, th, td {
+p {
+    color: var(--text);
+}
+
+h1, th {
     cursor: default;
+}
+
+table {
+    border-spacing: 0;
+}
+
+td {
+    cursor: pointer;
+}
+
+tr.filter > th > input {
+    width: calc(100% - 5px);
+}
+
+tr.filter > th {
+    text-align: center;
+}
+
+tbody > tr:hover {
+    background: #333;
 }
 
 input, button {
@@ -120,4 +146,9 @@ table.ordersTable tr > *:nth-child(1) {
 
 table.ordersTable tr > *:nth-child(2) {
     width: 300px;
+}
+
+.subHeaderDiv {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

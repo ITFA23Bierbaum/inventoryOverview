@@ -9,27 +9,43 @@
       {% csrf_token %}
         <input id="input_redirectValue" name="selectedOrderId" type="hidden" />
     </form>
-    <form id="frm_content" method="POST" enctype="multipart/form-data" >
-        <script type="text/javascript" src="{% static 'inventory/orderListScript.js' %}" ></script>
-        <table id="tbl_orders"
-               class="ordersTable" >
-            <thead >
-                <tr class="header" >
-                    <th>Auftrags-Nummer</th>
-                    <th>Kunde</th>
-                </tr>
+    <script type="text/javascript" src="{% static 'inventory/orderListScript.js' %}" ></script>
+    <table id="tbl_orders"
+           class="ordersTable" >
+        <thead>
+            <tr class="header" >
+                <th>Auftrags-Nummer</th>
+                <th>Kunde</th>
+            </tr>
+
+            <form id="frm_filter"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  action="{% url 'order-search' %}"
+                  style="display: none" >
+              {% csrf_token %}
+
                 <tr class="filter" >
                     <th>
-                        <input type="search"
+                        <input id="input_orderNoFilter"
+                               type="search"
+                               value="{{ filter_order_no }}"
                                placeholder="Auftrags-Nummer"
                                name="orderNoSearch"
                                onkeyup="filter(event)" >
                     </th>
                     <th>
-                        <input type="search" placeholder="Kunde" name="customerSearch" >
+                        <input id="input_customerNameFilter"
+                               type="search"
+                               name="customerSearch"
+                               value="{{ filter_customer }}"
+                               placeholder="Kunde"
+                               onkeyup="filter(event)" >
                     </th>
                 </tr>
-            </thead>
+            </form>
+        </thead>
+        <form id="frm_content" method="POST" enctype="multipart/form-data" >
             <tbody>
                 {% for order in orders %}
                 <tr class="contentRow" onclick="orderClick('{{order.id}}');" >
@@ -38,6 +54,6 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
-    </form>
+        </form>
+    </table>
 {% endblock content %}

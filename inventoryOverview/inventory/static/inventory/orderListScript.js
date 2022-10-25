@@ -2,7 +2,7 @@ function filter(event) {
     if (event.keyCode >= 48 && event.keyCode <= 57
             || event.keyCode >= 65 && event.keyCode <= 90
             || event.keyCode == 8) {
-        console.log(event.path[0].value);
+        frm_filter.submit();
     }
 }
 

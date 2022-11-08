@@ -17,16 +17,16 @@ body {
 }
 
 body > div {
-    padding: 8px;
+    padding: 0.5em;
 }
 
 .bannerDiv {
     display: flex;
-    height: 40px;
+    height: 3em;
     background-color: var(--dark-green);
     justify-content: space-between;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: .5em;
+    padding-bottom: .5em;
 }
 
 .bannerDiv > form {
@@ -36,15 +36,16 @@ body > div {
 }
 
 .bannerDiv > form > * {
-    margin: 4px;
+    margin: .25em;
 }
 
 .contentDiv {
-    height: calc(100% - 100px);
+    height: calc(100% - 9em);
+    margin-top: 2em;
 }
 
 .subcontentDiv {
-    height: 10px;
+    height: 1em;
     display: flex;
     justify-content: flex-end;
 }
@@ -66,27 +67,25 @@ table {
     border-spacing: 0;
 }
 
-td {
-    cursor: pointer;
-}
-
 tr.filter > th > input {
-    width: calc(100% - 5px);
+    width: calc(100% - .5em);
 }
 
 tr.filter > th {
     text-align: center;
 }
 
-tbody > tr:hover {
-    background: #333;
+input, button {
+    height: 2em;
+    padding: .25em;
 }
 
-input, button {
-    height: 30px;
-    border-radius: 2px;
-    border: 1px solid #000000;
-    padding: 4px;
+input {
+    border: .1em solid #000000;
+}
+
+button {
+    border: none;
 }
 
 input[type='search'] {
@@ -112,7 +111,7 @@ table tr > * {
 
 .header > th,
 .contentRow > td {
-    padding: 5px;
+    padding: .5em;
 }
 
 .filter > th {
@@ -121,15 +120,36 @@ table tr > * {
 
 .titleImage {
     height: 100%;
-    margin-right: 20px;
+    margin-right: 2em;
 }
 
 .title {
     display: flex;
+    align-items: center;
 }
 
-.contentDiv {
-    margin-top: 30px;
+.selectable td {
+    cursor: pointer;
+}
+
+.selectable tbody > tr:hover {
+    background: #333;
+}
+
+table.ordersTable {
+    width: calc(100% - 10em);
+}
+
+table.ordersTable tr > *:nth-child(1) {
+    width: 15em;
+}
+
+table.ordersTable tr > *:nth-child(2) {
+    width: calc(100% - 15em);
+}
+
+.subHeaderDiv {
+    margin-bottom: 1em;
 }
 
 @media screen and (min-width: 1000px) {
@@ -138,17 +158,4 @@ table tr > * {
         padding-left: 20%;
         padding-right: 20%;
     }
-}
-
-table.ordersTable tr > *:nth-child(1) {
-    width: 200px;
-}
-
-table.ordersTable tr > *:nth-child(2) {
-    width: 300px;
-}
-
-.subHeaderDiv {
-    margin-top: 10px;
-    margin-bottom: 10px;
 }

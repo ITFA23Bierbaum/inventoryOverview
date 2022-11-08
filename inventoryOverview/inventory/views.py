@@ -16,7 +16,7 @@ def search(request):
         print('filter_order_no: ' + filter_order_no)
         if filter_order_no:
             orders = orders.filter(number__startswith=filter_order_no)
-    if request.POST['customerSearch']:
+    if request.POST.get('customerSearch'):
         filter_customer = request.POST['customerSearch', '']
         print('filter_customer: ' + filter_customer)
         if filter_customer:

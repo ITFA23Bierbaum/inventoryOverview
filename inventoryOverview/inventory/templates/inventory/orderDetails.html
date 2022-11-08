@@ -17,25 +17,65 @@
           enctype="multipart/form-data"
           action="{% url 'order-detail' %}" >
       {% csrf_token %}
-        <table>
-            <tr>
-                <th>Artikel-Nummer</th>
-                <th>Artikel-Bezeichnung</th>
-                <th>Hersteller</th>
-                <th>bestellte Menge</th>
-                <th>noch vorhandene Menge</th>
-                <th>Regal</th>
-            </tr>
-            {% for item in items %}
-            <tr>
-                <td>{{item.inventoryItem.number}}</td>
-                <td>{{item.inventoryItem.name}}</td>
-                <td>{{item.inventoryItem.manufacturer}}</td>
-                <td>{{item.amount}}</td>
-                <td>{{item.inventoryItem.stock}}</td>
-                <td>{{item.inventoryItem.shelf}}</td>
-            </tr>
-            {% endfor %}
+        <table class="orderDetailsTable flexTable" >
+            <thead>
+                <tr class="header" >
+                    <th>
+                        <div>
+                            Artikel-Nummer
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            Artikel-Bezeichnung
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            Hersteller
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            bestellte Menge
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            noch vorhandene Menge
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            Regal
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr class="contentRow" >
+                    <td>
+                        <div>{{item.inventoryItem.number}}</div>
+                    </td>
+                    <td>
+                        <div>{{item.inventoryItem.name}}</div>
+                    </td>
+                    <td>
+                        <div>{{item.inventoryItem.manufacturer}}</div>
+                    </td>
+                    <td>
+                        <div>{{item.amount}}</div>
+                    </td>
+                    <td>
+                        <div>{{item.inventoryItem.stock}}</div>
+                    </td>
+                    <td>
+                        <div>{{item.inventoryItem.shelf}}</div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </form>
   {% endif %}

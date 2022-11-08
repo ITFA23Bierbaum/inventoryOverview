@@ -12,6 +12,7 @@
 }
 
 body {
+    height: 100vh;
     margin: 0;
     background-color: var(--background);
 }
@@ -109,9 +110,14 @@ table tr > * {
     color: var(--text);
 }
 
+table tr > * > * {
+    /*padding: .5em;*/
+}
+
 .header > th,
 .contentRow > td {
     padding: .5em;
+    width: 100%;
 }
 
 .filter > th {
@@ -136,8 +142,37 @@ table tr > * {
     background: #333;
 }
 
+.contentForm {
+    height: 100%;
+}
+
+table.flexTable, table.flexTable * {
+    display: flex;
+}
+
+table.flexTable > tbody {
+    overflow: auto;
+}
+
+table.flexTable, table.flexTable > tbody, table.flexTable> thead {
+    flex-direction: column;
+}
+
 table.ordersTable {
+    height: 100%;
     width: calc(100% - 10em);
+}
+
+table.ordersTable > thead {
+    height: 4em;
+}
+
+table.ordersTable > tbody {
+    height: calc(100% - 4em);
+}
+
+table.ordersTable > tbody > tr {
+    height: 2em;
 }
 
 table.ordersTable tr > *:nth-child(1) {
@@ -146,6 +181,10 @@ table.ordersTable tr > *:nth-child(1) {
 
 table.ordersTable tr > *:nth-child(2) {
     width: calc(100% - 15em);
+}
+
+table.orderDetailsTable {
+
 }
 
 .subHeaderDiv {

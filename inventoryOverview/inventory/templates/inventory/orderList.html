@@ -9,14 +9,18 @@
       {% csrf_token %}
         <input id="input_redirectValue" name="selectedOrderId" type="hidden" />
     </form>
-    <form id="frm_content" method="POST" enctype="multipart/form-data" >
+    <form id="frm_content" method="POST" enctype="multipart/form-data" class="contentForm" >
         <script type="text/javascript" src="{% static 'inventory/orderListScript.js' %}" ></script>
         <table id="tbl_orders"
-               class="ordersTable selectable" >
+               class="ordersTable selectable flexTable" >
             <thead>
                 <tr class="header" >
-                    <th>Auftrags-Nummer</th>
-                    <th>Kunde</th>
+                    <th>
+                        <div>Auftrags-Nummer</div>
+                    </th>
+                    <th>
+                        <div>Kunde</div>
+                    </th>
                 </tr>
 
                 <tr class="filter" >
@@ -41,8 +45,12 @@
             <tbody>
                 {% for order in orders %}
                 <tr class="contentRow" onclick="orderClick('{{order.id}}');" >
-                    <td>{{order.number}}</td>
-                    <td>{{order.customer.name}}</td>
+                    <td>
+                        <div>{{order.number}}</div>
+                    </td>
+                    <td>
+                        <div>{{order.customer.name}}</div>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

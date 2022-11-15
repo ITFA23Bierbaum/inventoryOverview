@@ -18,7 +18,7 @@ class InventoryItem(models.Model):
     name = models.CharField(max_length=100)
     manufacturer = models.CharField(max_length=100)
     stock = models.IntegerField()
-    shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE)
+    shelf = models.ForeignKey(Shelf, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return f"{self.number}, {self.name}, {self.stock}, {self.shelf}"
@@ -49,3 +49,4 @@ class OrderItem(models.Model):
     inventoryItem = models.ForeignKey(InventoryItem, on_delete=models.CASCADE)
     amount = models.IntegerField()
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    is_done = models.BooleanField(default=False)

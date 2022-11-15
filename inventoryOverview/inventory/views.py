@@ -8,21 +8,25 @@ import numpy as np
 from python_tsp.exact import solve_tsp_dynamic_programming
 from python_tsp.distances import euclidean_distance_matrix
 
+import json
+from django.shortcuts import *
+from django.template import RequestContext
 
 # Create your views here.
 def search(request):
     orders = Order.objects.filter()
-    filter_order_no, filter_customer = '', ''
-    if request.POST.get('orderNoSearch', ''):
-        filter_order_no = request.POST.get('orderNoSearch', '')
-        print('filter_order_no: ' + filter_order_no)
-        if filter_order_no:
-            orders = orders.filter(number__startswith=filter_order_no)
-    if request.POST.get('customerSearch'):
-        filter_customer = request.POST['customerSearch', '']
-        print('filter_customer: ' + filter_customer)
-        if filter_customer:
-            orders = orders.filter(customer__name__startswith=filter_customer)
+    if request.method == "POST" and request.POST.get('isFilter'):
+        if request.POST.get('orderNoSearch', ''):
+            filter_order_no = request.POST.get('orderNoSearch', '')
+            print('filter_order_no: ' + filter_order_no)
+            if filter_order_no:
+                orders = orders.filter(number__startswith=filter_order_no)
+        if request.POST.get('customerSearch'):
+            filter_customer = request.POST['customerSearch', '']
+            print('filter_customer: ' + filter_customer)
+            if filter_customer:
+                orders = orders.filter(customer__name__startswith=filter_customer)
+        # return HttpResponse(orders)
 
     return render(request, 'inventory/orderList.html', {'title': 'Auftrag suchen',
                                                         'orders': orders,

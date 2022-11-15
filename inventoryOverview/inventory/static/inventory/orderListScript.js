@@ -1,16 +1,20 @@
+$( document ).ready(function() {
+    $('#frm_content').submit(function(e){
+        $.post('/orderList', $(this).serialize(), function(data){
+           $('#tbl_orders_body').replaceWith($(jQuery.parseHTML(data)).find('#tbl_orders_body'));
+        });
+        e.preventDefault();
+    });
+});
+
 function filter(event) {
     if (event.keyCode >= 48 && event.keyCode <= 57
             || event.keyCode >= 65 && event.keyCode <= 90
             || event.keyCode == 8) {
-        frm_filter.submit();
+        document.getElementById('hidden_filter').value = 'active';
+        $('#frm_content').submit();
+        document.getElementById('hidden_filter').value = '';
     }
-}
-
-function addFilterToOrders() {
-    [].slice.call(document.getElementsByClassName('filter')[0].getElementsByTagName('input'))
-            .forEach(function(e) {
-        e.addEventListener('keyup', filter, false);
-    });
 }
 
 function orderClick(orderNo) {

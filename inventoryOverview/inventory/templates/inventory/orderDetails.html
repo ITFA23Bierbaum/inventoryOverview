@@ -15,7 +15,8 @@
     <form id="frm_orderDetails"
           method="POST"
           enctype="multipart/form-data"
-          action="{% url 'order-detail' %}" >
+          action="{% url 'order-detail' %}"
+          class="orderDetailsForm" >
       {% csrf_token %}
         <table class="orderDetailsTable flexTable" >
             <thead>

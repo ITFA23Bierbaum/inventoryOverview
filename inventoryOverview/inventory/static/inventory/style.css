@@ -183,8 +183,24 @@ table.ordersTable tr > *:nth-child(2) {
     width: calc(100% - 15em);
 }
 
-table.orderDetailsTable {
+form.orderDetailsForm {
+    height: calc(100% - 3.5em);
+}
 
+table.orderDetailsTable {
+    height: 100%;
+}
+
+table.orderDetailsTable > thead {
+    height: 4em;
+}
+
+table.orderDetailsTable > thead > tr {
+    height: 100%;
+}
+
+table.orderDetailsTable > tbody {
+    height: calc(100% - 4em);
 }
 
 .subHeaderDiv {

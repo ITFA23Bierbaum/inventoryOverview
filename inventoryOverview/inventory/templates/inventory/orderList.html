@@ -9,8 +9,16 @@
       {% csrf_token %}
         <input id="input_redirectValue" name="selectedOrderId" type="hidden" />
     </form>
-    <form id="frm_content" method="POST" enctype="multipart/form-data" class="contentForm" >
+    <form id="frm_content"
+          method="POST"
+          enctype="multipart/form-data"
+          action="{% url 'order-search' %}"
+          class="contentForm" >
+        {% csrf_token %}
         <script type="text/javascript" src="{% static 'inventory/orderListScript.js' %}" ></script>
+        <input id="hidden_filter"
+               name="isFilter"
+               style="display: none" >
         <table id="tbl_orders"
                class="ordersTable selectable flexTable" >
             <thead>
@@ -42,7 +50,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbl_orders_body" >
                 {% for order in orders %}
                 <tr class="contentRow" onclick="orderClick('{{order.id}}');" >
                     <td>

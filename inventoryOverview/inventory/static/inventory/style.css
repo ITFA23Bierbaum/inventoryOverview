@@ -203,6 +203,14 @@ table.orderDetailsTable > tbody {
     height: calc(100% - 4em);
 }
 
+table.orderDetailsTable tr > *:last-child {
+    width: 20%;
+}
+
+table.orderDetailsTable .contentRow > td:last-child > div > input:checked {
+
+}
+
 .subHeaderDiv {
     margin-bottom: 1em;
 }

@@ -1,5 +1,6 @@
 {% extends 'inventory/base.html' %}
 {% block content %}
+{% load static %}
   {% if order %}
     <form id="frm_returnButton"
           method="POST"
@@ -18,6 +19,7 @@
           action="{% url 'order-detail' %}"
           class="orderDetailsForm" >
       {% csrf_token %}
+        <script type="text/javascript" src="{% static 'inventory/orderDetailsScript.js' %}" ></script>
         <table class="orderDetailsTable flexTable" >
             <thead>
                 <tr class="header" >
@@ -43,12 +45,11 @@
                     </th>
                     <th>
                         <div>
-                            noch vorhandene Menge
+                            Regal
                         </div>
                     </th>
                     <th>
                         <div>
-                            Regal
                         </div>
                     </th>
                 </tr>
@@ -69,10 +70,14 @@
                         <div>{{item.amount}}</div>
                     </td>
                     <td>
-                        <div>{{item.inventoryItem.stock}}</div>
+                        <div>{{item.inventoryItem.shelf}}</div>
                     </td>
                     <td>
-                        <div>{{item.inventoryItem.shelf}}</div>
+                        <div>
+                            <input type="checkbox"
+                                   value="{{item.inventoryItem.is_done}}"
+                                   onclick="disableCheckbox()" >
+                        </div>
                     </td>
                 </tr>
                 {% endfor %}

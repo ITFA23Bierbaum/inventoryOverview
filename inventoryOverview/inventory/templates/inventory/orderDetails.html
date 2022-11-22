@@ -67,7 +67,11 @@
                         <div>{{item.inventoryItem.manufacturer}}</div>
                     </td>
                     <td>
+                        {% if item.inventoryItem.stock > item.amount %}
                         <div>{{item.amount}}</div>
+                        {% else %}
+                        <div style="color: red;">{{item.amount}}</div>
+                        {% endif %}
                     </td>
                     <td>
                         <div>{{item.inventoryItem.shelf}}</div>
@@ -84,5 +88,8 @@
             </tbody>
         </table>
     </form>
+    <br><br><br>
+    <p>{{ way|floatformat  }} Meter</p>
+    <img src='data:image/png;base64,{{picture}}' width="120" height="600" style='align: center;'>
   {% endif %}
 {% endblock %}

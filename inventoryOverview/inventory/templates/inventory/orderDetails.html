@@ -8,9 +8,13 @@
           action="{% url 'order-search' %}" >
       {% csrf_token %}
         <div class="subHeaderDiv" >
-            <button>
-                Zur Auftrags Übersicht
-            </button>
+            <div class="sub_header_spacement_div" >
+                <button>
+                    Zur Auftrags Übersicht
+                </button>
+
+                <img id="icon_show_best_path" src="{% static 'inventory/gps.png' %}" class="iconButton" >
+            </div>
         </div>
     </form>
     <form id="frm_orderDetails"
@@ -88,8 +92,9 @@
             </tbody>
         </table>
     </form>
-    <br><br><br>
-    <p>{{ way|floatformat  }} Meter</p>
-    <img src='data:image/png;base64,{{picture}}' width="120" height="600" style='align: center;'>
+    <div id="pnl_tsp_best_path" class="tsp_image_div" >
+        <img src="{% static 'inventory/close.png' %}" class="close-icon" >
+        <img src='data:image/png;base64,{{picture}}' class="tsp_image" >
+    </div>
   {% endif %}
 {% endblock %}

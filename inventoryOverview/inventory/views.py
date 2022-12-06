@@ -72,8 +72,8 @@ def make_route_image(x_values, y_values):
 
     # Add the patch to the Axes
     ax.add_patch(patches.Rectangle((0, 0), 0.4, 0.4, linewidth=1, edgecolor='#888', facecolor='none'))
-    for i in range(1, 4):
-        for j in range(1, 19):
+    for i in range(1, 9):
+        for j in range(1, 8):
             ax.add_patch(
                 patches.Rectangle((i - 0.2, j - 0.2), 0.4, 0.4, linewidth=1, edgecolor='#888', facecolor='none'))
 
@@ -82,10 +82,6 @@ def make_route_image(x_values, y_values):
     ax.set_facecolor('#222')
 
     ax1 = plt.subplot()
-    ax1.set_xticks(range(4))
-    ax1.set_xticklabels(range(4))
-    ax1.set_yticks(range(19))
-    ax1.set_yticklabels(range(19))
     # function to save the plot as base64
     tmpfile = BytesIO()
 

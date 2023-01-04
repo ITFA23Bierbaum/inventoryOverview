@@ -45,10 +45,13 @@ def order(request):
     for current_orderitem in current_orderitems:
         current_shelf = current_orderitem.inventoryItem.shelf
         sources = np.append(sources, [[current_shelf.row, current_shelf.section]], axis=0)
+    print(sources)
 
     distance_matrix = euclidean_distance_matrix(sources)  # find distances between points
     permutation, distance = solve_tsp_dynamic_programming(distance_matrix)  # find shortest way
-    sorted_orderitems = [x for _, x in sorted(zip(permutation[1::], current_orderitems))]
+    sorted_orderitems = []
+    for x in permutation[1::]:
+        sorted_orderitems.append(current_orderitems[x - 1])
 
     x_values = [0]
     y_values = [0]
@@ -73,7 +76,7 @@ def make_route_image(x_values, y_values):
     # Add the patch to the Axes
     ax.add_patch(patches.Rectangle((0, 0), 0.4, 0.4, linewidth=1, edgecolor='#888', facecolor='none'))
     for i in range(1, 9):
-        for j in range(1, 8):
+        for j in range(1,8):
             ax.add_patch(
                 patches.Rectangle((i - 0.2, j - 0.2), 0.4, 0.4, linewidth=1, edgecolor='#888', facecolor='none'))
 
